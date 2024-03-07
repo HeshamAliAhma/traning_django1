@@ -1,0 +1,22 @@
+from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import User
+
+
+# Create your models here.
+
+class Post(models.Model):
+
+
+    
+    slug_post = models.SlugField(max_length=250,verbose_name= "اللينك", unique_for_date='publish')
+    author = models.ForeignKey(User, verbose_name="صاحب المنشور", on_delete=models.CASCADE)
+    publish = models.DateTimeField(default=timezone.now , verbose_name="وقت رفع المنشور")
+    created = models.DateTimeField(auto_now_add=True, verbose_name="وقت عمل المنشور")
+    update = models.DateTimeField(auto_now=True, verbose_name="وقت تحديث المنشور")
+
+
+
+
+
+
